@@ -3,11 +3,11 @@
 Add influx repository:
   pkgrepo.managed:
     - humanname: "InfluxData"
-    - name: deb [arch=amd64] https://repos.influxdata.com/{{ salt['grains.get']("os", "ubuntu")|lower }} {% if salt['grains.get']("oscodename") in ['artful', 'bionic', 'xenial', 'yakkety', 'zesty'] %}{{ salt['grains.get']("oscodename") }}{% else %}bionic{% endif %} stable
+    - name: deb https://repos.influxdata.com/{{ salt['grains.get']("os", "ubuntu")|lower }}
     - file: /etc/apt/sources.list.d/influx.list
     - humanname: InfluxDB PPA
     - comps: stable
-    - dist: xenial
+    - dist: {% if salt['grains.get']("oscodename") in ['artful', 'bionic', 'xenial', 'yakkety', 'zesty'] %}{{ salt['grains.get']("oscodename") }}{% else %}bionic{% endif %}
     - key_url: https://repos.influxdata.com/influxdb.key
     - clean_file: true
     - require_in:
