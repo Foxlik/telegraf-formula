@@ -11,7 +11,7 @@ Add influx repository:
     - key_url: https://repos.influxdata.com/influxdb.key
     - clean_file: true
     - require_in:
-      - telegraf
+      - pkg: telegraf
 
 Install telegraf:
   pkg.latest:
