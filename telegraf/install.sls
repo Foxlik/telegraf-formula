@@ -2,7 +2,6 @@
 {% if grains['os'] == 'Ubuntu' %}
 Add influx repository:
   pkgrepo.managed:
-    - humanname: "InfluxData"
     - name: deb https://repos.influxdata.com/{{ salt['grains.get']("os", "ubuntu")|lower }}
     - file: /etc/apt/sources.list.d/influx.list
     - humanname: InfluxDB PPA
